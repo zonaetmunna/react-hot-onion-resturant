@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import './App.css';
 import Breakfast from './Pages/Home/Foods/BreakFast/Breakfast';
+import Details from './Pages/Home/Foods/Details/Details';
 import LaunchFoods from './Pages/Home/Foods/LaunchFoods/LaunchFoods';
 import Home from './Pages/Home/Home/Home';
 import Header from './Pages/Shared/Header';
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path="/launch">
             <LaunchFoods></LaunchFoods>
+          </Route>
+          <Route path="/foods/:id">
+            <Details></Details>
           </Route>
         </Switch>
       </BrowserRouter>

@@ -1,10 +1,19 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
+import { Link, useHistory } from 'react-router-dom';
 
 const BrekFood = ({ food }) => {
-     const { name, des, price, img } = food;
+     const { id, name, des, price, img } = food;
+     const history = useHistory()
+
+     const handleDetails = () => {
+          history.push(`/foods/${id}`)
+     }
+
+
      return (
           <div>
+
                <Col>
                     <Card>
                          <Card.Img variant="top" className="w-50 mx-auto p-4" src={img} />
@@ -16,10 +25,12 @@ const BrekFood = ({ food }) => {
                               <Card.Text>
                                    {price}
                               </Card.Text>
+                              <button onClick={handleDetails}>Details</button>
                          </Card.Body>
                     </Card>
                </Col>
-          </div>
+
+          </div >
      );
 };
 
