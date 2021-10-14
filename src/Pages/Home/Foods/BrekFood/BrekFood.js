@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col } from 'react-bootstrap';
+import { Card, Col, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 
 const BrekFood = ({ food }) => {
@@ -14,9 +14,9 @@ const BrekFood = ({ food }) => {
      return (
           <div>
 
-               <Col>
-                    <Card>
-                         <Card.Img variant="top" className="w-50 mx-auto p-4" src={img} />
+               <Col className="m-3">
+                    <Card className="shadow p-3 mb-5 bg-white rounded">
+                         <Card.Img variant="top" className="w-50 mx-auto p-2 shadow rounded-circle" src={img} />
                          <Card.Body>
                               <Card.Title>{name}</Card.Title>
                               <Card.Text>
@@ -25,7 +25,8 @@ const BrekFood = ({ food }) => {
                               <Card.Text>
                                    {price}
                               </Card.Text>
-                              <button onClick={handleDetails}>Details</button>
+                              <Button onClick={handleDetails} variant="light">Details</Button>
+
                          </Card.Body>
                     </Card>
                </Col>

@@ -1,34 +1,44 @@
 import React from 'react';
-import { Container, Nav, Navbar, NavDropdown, Button } from 'react-bootstrap';
+import { Container, Nav, Navbar, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
+import logo from '../../images/logo2.png';
 
 const Header = () => {
+     const { user, logOut } = useAuth();
+
      return (
           <div>
-               <Navbar collapseOnSelect expand="lg" bg="light" variant="warning">
+               <Navbar collapseOnSelect expand="lg" bg="light" sticky="top" >
                     <Container>
-                         <Navbar.Brand href="#home">RED ONION FOODS</Navbar.Brand>
+                         <Navbar.Brand as={Link} to="/home">
+                              <img
+                                   src={logo}
+                                   width="200"
+                                   height="50"
+                                   className="d-inline-block align-top"
+                                   alt="React Bootstrap logo"
+                              />
+                         </Navbar.Brand>
                          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                          <Navbar.Collapse id="responsive-navbar-nav">
                               <Nav className="me-auto">
-
-                                   <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                                        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                        <NavDropdown.Divider />
-                                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                                   </NavDropdown>
                               </Nav>
                               <Nav>
-
-
-                                   <Button variant="outline-success">Login</Button>
-                                   <Button variant="outline-success">Sign up</Button>
+                                   <Nav.Link as={Link} to="/cart"><i class="fas fa-shopping-cart"></i></Nav.Link>
                               </Nav>
+                              <Nav>
+                                   {user.email ? <Button onClick={logOut}>Logout</Button> : <Nav.Link as={Link} to="/login" className="fw-bold">Login</Nav.Link>}
+                              </Nav>
+                              {user.email && <Navbar.Text className="fw-bold">
+                                   Signed in as: {user.displayName}
+                              </Navbar.Text>}
+
+
                          </Navbar.Collapse>
                     </Container>
                </Navbar>
-          </div>
+          </div >
      );
 };
 

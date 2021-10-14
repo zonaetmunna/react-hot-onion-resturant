@@ -14,10 +14,9 @@ const Breakfast = () => {
 
      return (
           <div>
-               <Banner></Banner>
-               <Foods></Foods>
 
-               <Row xs={1} md={3} className="g-4">
+
+               <Row xs={1} md={3} className="g-2">
                     {
                          foods.map(food => <BrekFood
                               food={food}
